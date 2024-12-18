@@ -43,8 +43,8 @@ fi
 code_dir=$(dirname "$(dirname "${BASH_SOURCE[0]}")")
 rsem_genome=$(bash ${code_dir}/scripts/get-set-setting.sh "${proj_dir}/settings.txt" REF-RSEM);
 
-if [ ! -s "${rsem_genome}.transcripts.fa" ] ; then
-	echo -e "\n $script_name ERROR: GENOME ${rsem_genome}.transcripts.fa DOES NOT EXIST \n" >&2
+if [ ! -s "${rsem_genome}" ] ; then
+	echo -e "\n $script_name ERROR: GENOME ${rsem_genome} DOES NOT EXIST \n" >&2
 	exit 1
 fi
 
@@ -108,9 +108,9 @@ fi
 
 # RSEM
 
-module load bowtie2/2.2.6
+module load bowtie2/2.5.3
 
-rsem_bin_dir="/ifs/home/id460/software/RSEM-1.2.31/bin"
+rsem_bin_dir="/gpfs/data/igorlab/software/RSEM-1.2.31/bin"
 
 echo " * RSEM: ${rsem_bin_dir}/rsem-calculate-expression "
 echo " * RSEM version: $(${rsem_bin_dir}/rsem-calculate-expression --version) "
